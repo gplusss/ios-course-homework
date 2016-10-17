@@ -41,10 +41,13 @@ class AppDiary {
 
 let first = AppDiary(date: Date(), name: "Завтрак", text: "Пью кофе, холодно и грустно, потому что не сразу получилось", tags: ["весело",  "грустно"])
 let second = AppDiary(date: Date(), name: "Обед", text: "Пью кофе, весело и радостно, потому что Swift", tags: ["грустно"])
+let third = AppDiary(date: Date(), name: "Ужин", text: "Ем сочный стейк, потому что всё сделал", tags: ["круто", "вечер"])
 
+//print(first.fullDescrition())
+//print(second.fullDescrition())
+//print(third.fullDescrition())
 
-print(first.fullDescrition())
-print(second.fullDescrition())
+let arrayDiary = [first, second, third]
 
 
 
