@@ -6,8 +6,8 @@ class AppDiary {
     
     var date = Date()
     var name: String?
-    var text: String?
-    var tags: [String?]
+    var text: String
+    var tags: [String]
     
     init(date: Date, name: String, text: String, tags: [String]) {
         self.date = Date()
@@ -18,20 +18,28 @@ class AppDiary {
 
     func fullDescrition() -> String {
         var result = date.description
-        let nameTextTag = "\n" + name! + "\n" + text! + "\n" + String(describing: tags)
+        let nameTextTag = "\n" + name! + "\n" + text + "\n" + String(describing: tags)
         
-        if (name?.isEmpty)! {
-            result += "\n" + name!
+//        if (name?.isEmpty)! {
+//            result += "\n" + name!
+//        }
+        
+        if name == nil {
+            //let result = ""
+            return result + "\n" + text + "\n" + String(describing: tags)
         }
-        
+
+        if let name = self.name {
+            result += "\n" + name
+        }
         if (tags.count) > 0 {
             result += "\n"
             for i in tags {
-                result += "[" + i! + "]"
+                result += "[" + i + "]"
             }
         }
-        if (text?.isEmpty)! {
-            result += "\n" + text!
+        if (text.isEmpty) {
+            result += "\n" + text
         }
         
         let secondPerDay: TimeInterval = 60 * 24 * 24
@@ -66,6 +74,7 @@ print(third.fullDescrition())
 
 let arrayDiary = [first, second, third]
 let sortArrayDiary = arrayDiary.sorted(by: { $0.date > $1.date } )
+print(sortArrayDiary[0].date)
 
 
 
