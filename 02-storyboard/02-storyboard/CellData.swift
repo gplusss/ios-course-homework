@@ -9,21 +9,13 @@
 import Foundation
 import UIKit
 
-class Diary {
-    var name: String?
-    var date: Date
-    
-    init(name: String? = nil, date: Date) {
-        self.name = name
-        self.date = date
-    }
-    
-    
-    
-}
-let diaryData = [
-    Diary(name: "Завтрак", date: Date()),
-    Diary(name: "Обед", date: Date()),
-    Diary(name: "Ланч", date: Date()),
-    Diary(name: "Ужин", date: Date())
-]
+//    func encode(with aCoder: NSCoder) {
+//        aCoder.encode(name, forKey: "name")
+//        aCoder.encode(direction, forKey: "direction")
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        name = (aDecoder.decodeObject(forKey: "name") as? String) ?? ""
+//        direction = "hello"
+//    }
+//

@@ -9,10 +9,86 @@
 import Foundation
 import UIKit
 
+protocol SecondViewControllerDelegate: class {
+    func didSaveTodo(_ diary: Diary)
+}
 
-class SecondViewController: UIViewController {
-    override func viewDidLoad() {
-        self.title = "Diary Detail"
-        super.viewDidLoad()
+class SecondViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
+    
+    weak var delegate: SecondViewControllerDelegate?
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var directionsTextView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
+
+    
+    var diary: Diary? {
+        didSet {
+            updateFields()
+        }
     }
+    
+    func updateFields() {
+        if let diary = diary {
+            nameTextField?.text = diary.name
+            directionsTextView?.text = diary.direction
+        } else {
+            nameTextField?.text = ""
+            directionsTextView?.text = ""
+        }
+    }
+    
+    func doneDidPressed() {
+        view.endEditing(true)
+    }
+    
+    override func viewDidLoad() {
+        
+        if diary?.name != nil {
+            saveButton.setTitle("EDIT", for: UIControlState())
+            
+        } else {
+            saveButton.setTitle("SAVE", for: UIControlState())
+        }
+        nameTextField.text = diary?.name
+        
+        super.viewDidLoad()
+        updateFields()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        diary?.direction = textView.text
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        diary?.name = textField.text ?? ""
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func addButtonClicked(_ sender: AnyObject) {
+        NSLog("clicked")
+        
+        let title = nameTextField.text ?? ""
+        
+        if diary?.name == nil {
+            diary = Diary(name: title)
+        } else {
+            diary?.name = title
+        }
+        doneDidPressed()
+        delegate?.didSaveTodo(diary!)
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    
 }
