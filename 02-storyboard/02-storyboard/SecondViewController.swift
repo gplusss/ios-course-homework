@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol SecondViewControllerDelegate: class {
-    func didSaveTodo(_ diary: Diary)
+    func didSaveDiary(_ diary: Diary)
 }
 
 class SecondViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
@@ -20,8 +20,8 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var directionsTextView: UITextView!
     @IBOutlet weak var saveButton: UIButton!
-
-    
+    @IBOutlet weak var datePicker: UIDatePicker!
+        
     var diary: Diary? {
         didSet {
             updateFields()
@@ -50,7 +50,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         } else {
             saveButton.setTitle("SAVE", for: UIControlState())
         }
-        nameTextField.text = diary?.name
+        //nameTextField.text = diary?.name
         
         super.viewDidLoad()
         updateFields()
@@ -78,16 +78,43 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         NSLog("clicked")
         
         let title = nameTextField.text ?? ""
+        let date = directionsTextView.text ?? ""
         
         if diary?.name == nil {
             diary = Diary(name: title)
         } else {
             diary?.name = title
         }
+        
+        diary?.direction = date
+        
         doneDidPressed()
-        delegate?.didSaveTodo(diary!)
+        delegate?.didSaveDiary(diary!)
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        
+        dateFormatter.timeStyle = DateFormatter.Style.medium
+        
+        directionsTextView.text = dateFormatter.string(from: sender.date)
+        
+    }
+    // MARK: sender Date Picker
+    
+    @IBAction func datePicker(sender: UITextView) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePickerMode.date        
+        //sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: #selector(SecondViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
     }
 
     

@@ -16,4 +16,7 @@ class Diary {
         self.name = name
         self.direction = direction
     }
+    
+
+    
 }

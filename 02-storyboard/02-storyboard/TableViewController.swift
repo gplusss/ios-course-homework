@@ -32,6 +32,10 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    func displayedDiaryAtIndexPath(_ indexPath: IndexPath) -> Diary {
+        return diaries[(indexPath as NSIndexPath).row]
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let vc = segue.destination as? SecondViewController else { return }
@@ -77,25 +81,28 @@ class TableViewController: UITableViewController {
         performSegue(withIdentifier: "showDetail", sender: diary)
     }
     
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
-//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { ( deleteAction, indexPath )  -> Void in
-//            self.diaries.remove(at: self.diaries.index(self.diaries.startIndex, offsetBy: (indexPath as NSIndexPath).row))
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//            tableView.reloadData()
-//            
-//        }
-//        deleteAction.backgroundColor = UIColor.red
-//        return [deleteAction]
-//    }
+    //TODO Delete Action
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { ( deleteAction, indexPath )  -> Void in
+            //self.diaries.remove(at: self.diaries.index(self.diaries.startIndex, offsetBy: (indexPath as NSIndexPath).row))
+            self.diaries.remove(at: (indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        let doneAction = UITableViewRowAction(style: .normal, title: "Done") { ( doneAction, indexPath ) -> Void in
+            
+        }
+        deleteAction.backgroundColor = UIColor.red
+        return [deleteAction, doneAction]
+    }
 }
 
 extension TableViewController: SecondViewControllerDelegate {
-    func didSaveTodo(_ diary: Diary) {
+    func didSaveDiary(_ diary: Diary) {
         diaries.append(diary)
     }
 }
