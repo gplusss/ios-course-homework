@@ -78,7 +78,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         NSLog("clicked")
         
         let title = nameTextField.text ?? ""
-        let date = directionsTextView.text ?? ""
+        let date = datePicker.date
         
         if diary?.name == nil {
             diary = Diary(name: title)
@@ -86,7 +86,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
             diary?.name = title
         }
         
-        diary?.direction = date
+        diary?.direction = String(describing: date)
         
         doneDidPressed()
         delegate?.didSaveDiary(diary!)
@@ -94,7 +94,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         self.dismiss(animated: true, completion: nil)
     }
     
-    func datePickerValueChanged(sender:UIDatePicker) {
+    func datePickerValueChanged(sender: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
         
@@ -111,7 +111,6 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         let datePickerView:UIDatePicker = UIDatePicker()
         
         datePickerView.datePickerMode = UIDatePickerMode.date        
-        //sender.inputView = datePickerView
         
         datePickerView.addTarget(self, action: #selector(SecondViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
         

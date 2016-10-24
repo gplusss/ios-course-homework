@@ -11,20 +11,7 @@ import Foundation
 
 class TableViewController: UITableViewController {
 
-    fileprivate var diaries = [Diary]() {
-        didSet {
-            invalidateDisplayedDiarys()
-        }
-    }
-
-    
-    fileprivate func invalidateDisplayedDiarys(animated: Bool = false) {
-        if animated {
-            tableView?.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
-        } else {
-            tableView?.reloadData()
-        }
-    }
+    fileprivate var diaries = [Diary]()
     
     func addTapped() {
         performSegue(withIdentifier: "showDetail", sender: nil)
@@ -77,7 +64,7 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let diary = diaries[diaries.index(diaries.startIndex, offsetBy: (indexPath as NSIndexPath).row)]
+        let diary = diaries[indexPath.row]
         performSegue(withIdentifier: "showDetail", sender: diary)
     }
     
@@ -89,21 +76,25 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { ( deleteAction, indexPath )  -> Void in
-            //self.diaries.remove(at: self.diaries.index(self.diaries.startIndex, offsetBy: (indexPath as NSIndexPath).row))
-            self.diaries.remove(at: (indexPath as NSIndexPath).row)
+            self.diaries.remove(at: indexPath.row)
+            tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
         }
-        let doneAction = UITableViewRowAction(style: .normal, title: "Done") { ( doneAction, indexPath ) -> Void in
-            
-        }
+
         deleteAction.backgroundColor = UIColor.red
-        return [deleteAction, doneAction]
+        return [deleteAction]
     }
 }
 
 extension TableViewController: SecondViewControllerDelegate {
     func didSaveDiary(_ diary: Diary) {
         diaries.append(diary)
+
+        let indexPath = IndexPath(row: diaries.count - 1, section: 0)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        tableView.endUpdates()
     }
 }
 
