@@ -27,6 +27,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
             updateFields()
         }
     }
+    //fileprivate var diaries = [Diary]()
     
     func updateFields() {
         if let diary = diary {
@@ -50,10 +51,10 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         } else {
             saveButton.setTitle("SAVE", for: UIControlState())
         }
-        //nameTextField.text = diary?.name
         
-        super.viewDidLoad()
         updateFields()
+        super.viewDidLoad()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,8 +73,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+        
     @IBAction func addButtonClicked(_ sender: AnyObject) {
         NSLog("clicked")
         
@@ -85,6 +85,9 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         } else {
             diary?.name = title
         }
+        
+        self.navigationController?.popViewController(animated: true)
+               self.dismiss(animated: true, completion: nil)
         
         diary?.direction = String(describing: date)
         

@@ -13,6 +13,14 @@ class TableViewController: UITableViewController {
 
     fileprivate var diaries = [Diary]()
     
+//    var allDiries: [Diary] {
+//        let diary = diaries.sorted(by: { (diary1: Diary, diary2: Diary) -> Bool in
+//            return diary1.direction?.localizedCaseInsensitiveCompare(diary2.direction!) == ComparisonResult.orderedAscending
+//        })
+//        return diary
+//        
+//    }
+    
     func addTapped() {
         performSegue(withIdentifier: "showDetail", sender: nil)
         
@@ -27,6 +35,7 @@ class TableViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             guard let vc = segue.destination as? SecondViewController else { return }
             vc.delegate = self
+            vc.diary = sender as? Diary //edit by Khomenko
         }
     }
 
@@ -72,8 +81,6 @@ class TableViewController: UITableViewController {
         return true
     }
     
-    //TODO Delete Action
-    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { ( deleteAction, indexPath )  -> Void in
             self.diaries.remove(at: indexPath.row)
@@ -89,7 +96,9 @@ class TableViewController: UITableViewController {
 
 extension TableViewController: SecondViewControllerDelegate {
     func didSaveDiary(_ diary: Diary) {
-        diaries.append(diary)
+        
+        diaries.insert(diary, at: 0)
+        //diaries.append(diary)
 
         let indexPath = IndexPath(row: diaries.count - 1, section: 0)
         tableView.beginUpdates()
