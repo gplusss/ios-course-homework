@@ -96,13 +96,12 @@ class TableViewController: UITableViewController {
 
 extension TableViewController: SecondViewControllerDelegate {
     func didSaveDiary(_ diary: Diary) {
-        
         diaries.insert(diary, at: 0)
+        
         //diaries.append(diary)
-
         let indexPath = IndexPath(row: diaries.count - 1, section: 0)
         tableView.beginUpdates()
-        tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        tableView.insertRows(at: [indexPath], with: .automatic)
         tableView.endUpdates()
     }
 }

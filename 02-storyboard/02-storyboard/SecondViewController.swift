@@ -16,18 +16,24 @@ protocol SecondViewControllerDelegate: class {
 class SecondViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
     
     weak var delegate: SecondViewControllerDelegate?
+    let segmentController = UISegmentedControl()
     
+    
+    func weatherController(_ sender: UISegmentedControl) {
+        
+    }
+   
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var directionsTextView: UITextView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var weatherSegmentController: UISegmentedControl!
         
     var diary: Diary? {
         didSet {
             updateFields()
         }
     }
-    //fileprivate var diaries = [Diary]()
     
     func updateFields() {
         if let diary = diary {
@@ -45,15 +51,22 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     
     override func viewDidLoad() {
         
+        
         if diary?.name != nil {
             saveButton.setTitle("EDIT", for: UIControlState())
-            
         } else {
             saveButton.setTitle("SAVE", for: UIControlState())
         }
-        
         updateFields()
+
+        
+        
+        segmentController.addTarget(self, action: #selector(SecondViewController.weatherController(_:)), for: UIControlEvents.valueChanged)
+        self.view.addSubview(segmentController)
+        self.navigationItem.titleView = segmentController
         super.viewDidLoad()
+        
+        
         
     }
     
@@ -73,12 +86,30 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func dateFormat() {
+        
+        
+    }
+    
+    @IBAction func weatherSegmentController(_sender: UISegmentedControl) {
+        
+            segmentController.insertSegment(with: UIImage(named: "weather_rain"), at: 0, animated: true)
+            segmentController.insertSegment(with: UIImage(named: "weather_snow"), at: 1, animated: true)
+            segmentController.insertSegment(with: UIImage(named: "weather_storm"), at: 2, animated: true)
+        
+        
+        
+    }
         
     @IBAction func addButtonClicked(_ sender: AnyObject) {
-        NSLog("clicked")
+        
+        let format = DateFormatter()
+        format.dateFormat = "YYYY-MM-dd"
+        let strDate = format.string(from: datePicker.date)
         
         let title = nameTextField.text ?? ""
-        let date = datePicker.date
+        let date = strDate
         
         if diary?.name == nil {
             diary = Diary(name: title)
@@ -86,7 +117,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
             diary?.name = title
         }
         
-        self.navigationController?.popViewController(animated: true)
+        let _ = navigationController?.popViewController(animated: true)
                self.dismiss(animated: true, completion: nil)
         
         diary?.direction = String(describing: date)
@@ -100,18 +131,13 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     func datePickerValueChanged(sender: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
-        
         dateFormatter.dateStyle = DateFormatter.Style.medium
-        
-        dateFormatter.timeStyle = DateFormatter.Style.medium
-        
         directionsTextView.text = dateFormatter.string(from: sender.date)
         
     }
-    // MARK: sender Date Picker
     
     @IBAction func datePicker(sender: UITextView) {
-        let datePickerView:UIDatePicker = UIDatePicker()
+        let datePickerView: UIDatePicker = UIDatePicker()
         
         datePickerView.datePickerMode = UIDatePickerMode.date        
         
