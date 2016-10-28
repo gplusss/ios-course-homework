@@ -9,6 +9,8 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
+    
+    let switcher = UISwitch()
 
     override func viewDidLoad() {
         
@@ -22,48 +24,27 @@ class SettingsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 2
-//    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellDateTime", for: indexPath) as! SettingsViewCell
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
-
-        if (indexPath.section == 0) && (indexPath.row == 0) {
-            cell.dateAndTime.text = "Date and Time"
-            cell.dateOnly.text = "Date Only"
-        } /*else if (indexPath.section == 1) {
-        
-        }*/
-        cell.accessoryType = .checkmark
-        
-        
-        return cell
-    }
-    
-    
-
-    
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let section = indexPath.section
-        let numberOfRows = tableView.numberOfRows(inSection: section)
+        let numberOfRows = tableView.numberOfRows(inSection: indexPath.section)
         for row in 0..<numberOfRows {
-            
-            if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if let cell = tableView.cellForRow(at: IndexPath(row: row, section: section)) {
                 cell.accessoryType = row == indexPath.row ? .checkmark : .none
-                
- 
             }
-            
-//            if let cell = tableView.cellForRowAtIndexPathIndexPath(forRow: row, inSection: section)) {
-//                cell.accessoryType = row == indexPath.row ? .Checkmark : .None
-//            }
         }
-        // ... update the model ...
     }
     
+    @IBAction func switcher(_ sender: AnyObject) {
+        
+        if switcher.isOn {
+            self.tableView.backgroundColor = UIColor.brown
+            
+        } else if switcher.isOn == false {
+            self.tableView.backgroundColor = UIColor.blue
+        }
+    }
     
     
     
