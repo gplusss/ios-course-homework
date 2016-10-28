@@ -51,22 +51,23 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     
     override func viewDidLoad() {
         
-        
+        super.viewDidLoad()
         if diary?.name != nil {
             saveButton.setTitle("EDIT", for: UIControlState())
         } else {
             saveButton.setTitle("SAVE", for: UIControlState())
         }
         updateFields()
-
-        
         
         segmentController.addTarget(self, action: #selector(SecondViewController.weatherController(_:)), for: UIControlEvents.valueChanged)
-        self.view.addSubview(segmentController)
+        
+        //segmentController.fr
+        
+        segmentController.frame = CGRect(x: 200, y: 30, width: 200, height: 30)
+        segmentController.insertSegment(with: UIImage(named: "weather_rain"), at: 0, animated: true)
+        segmentController.insertSegment(with: UIImage(named: "weather_snow"), at: 1, animated: true)
+        segmentController.insertSegment(with: UIImage(named: "weather_storm"), at: 2, animated: true)
         self.navigationItem.titleView = segmentController
-        super.viewDidLoad()
-        
-        
         
     }
     
@@ -93,10 +94,6 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     }
     
     @IBAction func weatherSegmentController(_sender: UISegmentedControl) {
-        
-            segmentController.insertSegment(with: UIImage(named: "weather_rain"), at: 0, animated: true)
-            segmentController.insertSegment(with: UIImage(named: "weather_snow"), at: 1, animated: true)
-            segmentController.insertSegment(with: UIImage(named: "weather_storm"), at: 2, animated: true)
         
         
         

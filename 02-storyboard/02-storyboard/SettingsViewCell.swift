@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class SettingsViewCell: UITableViewCell {
+    
     @IBOutlet weak var dateAndTime: UILabel!
     @IBOutlet weak var dateOnly: UILabel!
     

@@ -22,17 +22,29 @@ class SettingsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 2
+//    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellD&T", for: indexPath) as! SettingsViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellDateTime", for: indexPath) as! SettingsViewCell
         
-        cell.dateAndTime.text = "Date and Time"
-        cell.dateOnly.text = "Date Only"
-        //cell.dateAndTime.accessoryType = UITableViewCellAccessoryType.checkmark
+
+        if (indexPath.section == 0) && (indexPath.row == 0) {
+            cell.dateAndTime.text = "Date and Time"
+            cell.dateOnly.text = "Date Only"
+        } /*else if (indexPath.section == 1) {
+        
+        }*/
         cell.accessoryType = .checkmark
         
         
         return cell
     }
+    
+    
+
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let section = indexPath.section
@@ -41,6 +53,7 @@ class SettingsViewController: UITableViewController {
             
             if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
                 cell.accessoryType = row == indexPath.row ? .checkmark : .none
+                
  
             }
             
