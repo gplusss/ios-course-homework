@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Diary {
+class Diary: Equatable {
     var name: String?
     var direction: String?
     
@@ -17,6 +17,8 @@ class Diary {
         self.direction = direction
     }
     
-
+    static func ==(lhs: Diary, rhs: Diary) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    }
     
 }

@@ -8,18 +8,55 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class TableViewController: UITableViewController {
 
     fileprivate var diaries = [Diary]()
     
-//    var allDiries: [Diary] {
-//        let diary = diaries.sorted(by: { (diary1: Diary, diary2: Diary) -> Bool in
-//            return diary1.direction?.localizedCaseInsensitiveCompare(diary2.direction!) == ComparisonResult.orderedAscending
-//        })
-//        return diary
-//        
-//    }
+    var managedObjectContext: NSManagedObjectContext? {
+        didSet {
+            invalidateDisplayedRecipes()
+        }
+    }
+    
+    fileprivate var _displayedRecipes: [Recipe]?
+    var displayedRecipes: [Recipe] {
+        if let cachedArray = _displayedRecipes {
+            return cachedArray
+        }
+        
+        if let managedObjectContext = managedObjectContext {
+            let fetchRequest = Recipe.fetchRequest() as! NSFetchRequest<Recipe>
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+            
+            do {
+                let fetchResults = try managedObjectContext.fetch(fetchRequest)
+                if !fetchResults.isEmpty {
+                    _displayedRecipes = fetchResults
+                    return fetchResults
+                }
+            } catch {
+                print(error)
+            }
+        }
+        return []
+    }
+    
+    fileprivate func invalidateDisplayedRecipes(animated: Bool = false) {
+        _displayedRecipes = nil
+        if animated {
+            tableView?.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
+        } else {
+            tableView?.reloadData()
+        }
+    }
+    
+    func displayedRecipeAtIndexPath(_ indexPath: IndexPath) -> Recipe {
+        return displayedRecipes[(indexPath as NSIndexPath).row]
+    }
+
+
     
     func addTapped() {
         performSegue(withIdentifier: "showDetail", sender: nil)
@@ -89,20 +126,24 @@ class TableViewController: UITableViewController {
             tableView.endUpdates()
         }
 
-        deleteAction.backgroundColor = UIColor.red
+            deleteAction.backgroundColor = UIColor.red
         return [deleteAction]
     }
 }
 
 extension TableViewController: SecondViewControllerDelegate {
     func didSaveDiary(_ diary: Diary) {
-        diaries.insert(diary, at: 0)
-        
-        //diaries.append(diary)
-        let indexPath = IndexPath(row: diaries.count - 1, section: 0)
-        tableView.beginUpdates()
-        tableView.insertRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
+        let exist = diaries.contains { (diaryObj) -> Bool in
+            diaryObj == diary
+        }
+        if(!exist) {
+            diaries.append(diary)
+        }
+        tableView.reloadData()
+//        let indexPath = IndexPath(row: diaries.count - 1, section: 0)
+//        tableView.beginUpdates()
+//        tableView.insertRows(at: [indexPath], with: .automatic)
+//        tableView.endUpdates()
     }
 }
 

@@ -95,8 +95,6 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     
     @IBAction func weatherSegmentController(_sender: UISegmentedControl) {
         
-        
-        
     }
         
     @IBAction func addButtonClicked(_ sender: AnyObject) {
