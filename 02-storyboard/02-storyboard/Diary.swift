@@ -1,12 +1,13 @@
 //
 //  Diary.swift
-//  02-storyboard
+//  Diary
 //
 //  Created by Vladimir Saprykin on 22.10.16.
 //  Copyright © 2016 Vladimir Saprykin. All rights reserved.
 //
 
 import Foundation
+import CoreData
 
 class Diary: Equatable {
     var name: String?

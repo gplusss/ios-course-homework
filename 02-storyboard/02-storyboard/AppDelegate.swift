@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  02-storyboard
+//  Diary
 //
 //  Created by Vladimir Saprykin on 19.10.16.
 //  Copyright © 2016 Vladimir Saprykin. All rights reserved.
@@ -16,11 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let navigationController = self.window!.rootViewController as! UINavigationController
-        let controller = navigationController.topViewController as! TableViewController
-        
-        
-        controller.managedObjectContext = self.persistentContainer.viewContext
+//        let navigationController = self.window!.rootViewController as! UINavigationController
+//        let controller = navigationController.topViewController as! TableViewController
+//        
+//        
+//        controller.managedObjectContext = self.persistentContainer.viewContext
         return true
     }
 

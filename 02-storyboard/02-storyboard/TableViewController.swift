@@ -1,6 +1,6 @@
 //
 //  TableViewController.swift
-//  02-storyboard
+//  Diary
 //
 //  Created by Vladimir Saprykin on 19.10.16.
 //  Copyright © 2016 Vladimir Saprykin. All rights reserved.
@@ -14,47 +14,47 @@ class TableViewController: UITableViewController {
 
     fileprivate var diaries = [Diary]()
     
-    var managedObjectContext: NSManagedObjectContext? {
-        didSet {
-            invalidateDisplayedRecipes()
-        }
-    }
+//    var managedObjectContext: NSManagedObjectContext? {
+//        didSet {
+//            invalidateDisplayedRecipes()
+//        }
+//    }
     
-    fileprivate var _displayedRecipes: [Recipe]?
-    var displayedRecipes: [Recipe] {
-        if let cachedArray = _displayedRecipes {
-            return cachedArray
-        }
-        
-        if let managedObjectContext = managedObjectContext {
-            let fetchRequest = Recipe.fetchRequest() as! NSFetchRequest<Recipe>
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-            
-            do {
-                let fetchResults = try managedObjectContext.fetch(fetchRequest)
-                if !fetchResults.isEmpty {
-                    _displayedRecipes = fetchResults
-                    return fetchResults
-                }
-            } catch {
-                print(error)
-            }
-        }
-        return []
-    }
+    fileprivate var _displayedRecipes: [Diary]?
+//    var displayedRecipes: [Diary] {
+//        if let cachedArray = _displayedRecipes {
+//            return cachedArray
+//        }
+//        
+//        if let managedObjectContext = managedObjectContext {
+//            let fetchRequest = Diary.fetchRequest() as! NSFetchRequest<Diary>
+//            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+//            
+//            do {
+//                let fetchResults = try managedObjectContext.fetch(fetchRequest)
+//                if !fetchResults.isEmpty {
+//                    _displayedRecipes = fetchResults
+//                    return fetchResults
+//                }
+//            } catch {
+//                print(error)
+//            }
+//        }
+//        return []
+//    }
     
-    fileprivate func invalidateDisplayedRecipes(animated: Bool = false) {
-        _displayedRecipes = nil
-        if animated {
-            tableView?.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
-        } else {
-            tableView?.reloadData()
-        }
-    }
-    
-    func displayedRecipeAtIndexPath(_ indexPath: IndexPath) -> Recipe {
-        return displayedRecipes[(indexPath as NSIndexPath).row]
-    }
+//    fileprivate func invalidateDisplayedRecipes(animated: Bool = false) {
+//        _displayedRecipes = nil
+//        if animated {
+//            tableView?.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
+//        } else {
+//            tableView?.reloadData()
+//        }
+//    }
+//    
+//    func displayedRecipeAtIndexPath(_ indexPath: IndexPath) -> Diary {
+//        return displayedRecipes[(indexPath as NSIndexPath).row]
+//    }
 
 
     

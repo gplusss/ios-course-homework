@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "404278731DB7E4E7003EEF80"
-               BuildableName = "02-storyboard.app"
-               BlueprintName = "02-storyboard"
-               ReferencedContainer = "container:02-storyboard.xcodeproj">
+               BuildableName = "Diary.app"
+               BlueprintName = "Diary"
+               ReferencedContainer = "container:Diary.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "404278731DB7E4E7003EEF80"
-            BuildableName = "02-storyboard.app"
-            BlueprintName = "02-storyboard"
-            ReferencedContainer = "container:02-storyboard.xcodeproj">
+            BuildableName = "Diary.app"
+            BlueprintName = "Diary"
+            ReferencedContainer = "container:Diary.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "404278731DB7E4E7003EEF80"
-            BuildableName = "02-storyboard.app"
-            BlueprintName = "02-storyboard"
-            ReferencedContainer = "container:02-storyboard.xcodeproj">
+            BuildableName = "Diary.app"
+            BlueprintName = "Diary"
+            ReferencedContainer = "container:Diary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "404278731DB7E4E7003EEF80"
-            BuildableName = "02-storyboard.app"
-            BlueprintName = "02-storyboard"
-            ReferencedContainer = "container:02-storyboard.xcodeproj">
+            BuildableName = "Diary.app"
+            BlueprintName = "Diary"
+            ReferencedContainer = "container:Diary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

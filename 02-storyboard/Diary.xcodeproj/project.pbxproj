@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		404278741DB7E4E7003EEF80 /* 02-storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "02-storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		404278741DB7E4E7003EEF80 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		404278771DB7E4E7003EEF80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		404278791DB7E4E7003EEF80 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4042787C1DB7E4E7003EEF80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		4042786B1DB7E4E7003EEF80 = {
 			isa = PBXGroup;
 			children = (
-				404278761DB7E4E7003EEF80 /* 02-storyboard */,
+				404278761DB7E4E7003EEF80 /* Diary */,
 				404278751DB7E4E7003EEF80 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,12 +56,12 @@
 		404278751DB7E4E7003EEF80 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				404278741DB7E4E7003EEF80 /* 02-storyboard.app */,
+				404278741DB7E4E7003EEF80 /* Diary.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		404278761DB7E4E7003EEF80 /* 02-storyboard */ = {
+		404278761DB7E4E7003EEF80 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
 				404278771DB7E4E7003EEF80 /* AppDelegate.swift */,
@@ -76,15 +76,16 @@
 				404278801DB7E4E8003EEF80 /* LaunchScreen.storyboard */,
 				404278831DB7E4E8003EEF80 /* Info.plist */,
 			);
+			name = Diary;
 			path = "02-storyboard";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		404278731DB7E4E7003EEF80 /* 02-storyboard */ = {
+		404278731DB7E4E7003EEF80 /* Diary */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 404278861DB7E4E8003EEF80 /* Build configuration list for PBXNativeTarget "02-storyboard" */;
+			buildConfigurationList = 404278861DB7E4E8003EEF80 /* Build configuration list for PBXNativeTarget "Diary" */;
 			buildPhases = (
 				404278701DB7E4E7003EEF80 /* Sources */,
 				404278711DB7E4E7003EEF80 /* Frameworks */,
@@ -94,9 +95,9 @@
 			);
 			dependencies = (
 			);
-			name = "02-storyboard";
+			name = Diary;
 			productName = "02-storyboard";
-			productReference = 404278741DB7E4E7003EEF80 /* 02-storyboard.app */;
+			productReference = 404278741DB7E4E7003EEF80 /* Diary.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -106,7 +107,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Vladimir Saprykin";
 				TargetAttributes = {
 					404278731DB7E4E7003EEF80 = {
@@ -116,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4042786F1DB7E4E7003EEF80 /* Build configuration list for PBXProject "02-storyboard" */;
+			buildConfigurationList = 4042786F1DB7E4E7003EEF80 /* Build configuration list for PBXProject "Diary" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -129,7 +130,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				404278731DB7E4E7003EEF80 /* 02-storyboard */,
+				404278731DB7E4E7003EEF80 /* Diary */,
 			);
 		};
 /* End PBXProject section */
@@ -202,6 +203,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -252,6 +254,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -306,7 +309,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4042786F1DB7E4E7003EEF80 /* Build configuration list for PBXProject "02-storyboard" */ = {
+		4042786F1DB7E4E7003EEF80 /* Build configuration list for PBXProject "Diary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				404278841DB7E4E8003EEF80 /* Debug */,
@@ -315,7 +318,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		404278861DB7E4E8003EEF80 /* Build configuration list for PBXNativeTarget "02-storyboard" */ = {
+		404278861DB7E4E8003EEF80 /* Build configuration list for PBXNativeTarget "Diary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				404278871DB7E4E8003EEF80 /* Debug */,

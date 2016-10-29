@@ -1,6 +1,6 @@
 //
 //  SettingsViewController.swift
-//  02-storyboard
+//  Diary
 //
 //  Created by Vladimir Saprykin on 23.10.16.
 //  Copyright © 2016 Vladimir Saprykin. All rights reserved.
