@@ -96,15 +96,25 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     @IBAction func weatherSegmentController(_sender: UISegmentedControl) {
         
     }
+    
+    func dateAndTime() -> String {
+        let format = DateFormatter()
+        format.dateFormat = "YYYY-MM-dd HH:mm"
+        return format.string(from: datePicker.date)
         
-    @IBAction func addButtonClicked(_ sender: AnyObject) {
-        
+    }
+    
+    func dateOnly() -> String {
         let format = DateFormatter()
         format.dateFormat = "YYYY-MM-dd"
-        let strDate = format.string(from: datePicker.date)
+        return format.string(from: datePicker.date)
+    }
+    
+    
+    @IBAction func addButtonClicked(_ sender: AnyObject) {
         
         let title = nameTextField.text ?? ""
-        let date = strDate
+        let date = dateOnly()
         
         if diary?.name == nil {
             diary = Diary(name: title)
@@ -140,5 +150,8 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         
     }
 
-    
 }
+
+
+
+

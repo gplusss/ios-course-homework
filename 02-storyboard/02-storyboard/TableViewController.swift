@@ -14,48 +14,8 @@ class TableViewController: UITableViewController {
 
     fileprivate var diaries = [Diary]()
     
-//    var managedObjectContext: NSManagedObjectContext? {
-//        didSet {
-//            invalidateDisplayedRecipes()
-//        }
-//    }
     
     fileprivate var _displayedRecipes: [Diary]?
-//    var displayedRecipes: [Diary] {
-//        if let cachedArray = _displayedRecipes {
-//            return cachedArray
-//        }
-//        
-//        if let managedObjectContext = managedObjectContext {
-//            let fetchRequest = Diary.fetchRequest() as! NSFetchRequest<Diary>
-//            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-//            
-//            do {
-//                let fetchResults = try managedObjectContext.fetch(fetchRequest)
-//                if !fetchResults.isEmpty {
-//                    _displayedRecipes = fetchResults
-//                    return fetchResults
-//                }
-//            } catch {
-//                print(error)
-//            }
-//        }
-//        return []
-//    }
-    
-//    fileprivate func invalidateDisplayedRecipes(animated: Bool = false) {
-//        _displayedRecipes = nil
-//        if animated {
-//            tableView?.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
-//        } else {
-//            tableView?.reloadData()
-//        }
-//    }
-//    
-//    func displayedRecipeAtIndexPath(_ indexPath: IndexPath) -> Diary {
-//        return displayedRecipes[(indexPath as NSIndexPath).row]
-//    }
-
 
     
     func addTapped() {
@@ -140,10 +100,16 @@ extension TableViewController: SecondViewControllerDelegate {
             diaries.append(diary)
         }
         tableView.reloadData()
-//        let indexPath = IndexPath(row: diaries.count - 1, section: 0)
-//        tableView.beginUpdates()
-//        tableView.insertRows(at: [indexPath], with: .automatic)
-//        tableView.endUpdates()
     }
 }
+
+extension TableViewController: SettingViewControllerDelegate {
+    func date() {
+        
+    }
+}
+
+
+
+
 
