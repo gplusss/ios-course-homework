@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class TableViewController: UITableViewController, SettingViewControllerDelegate {
+class TableViewController: UITableViewController {
 
     fileprivate var diaries = [Diary]()
     
@@ -32,9 +32,6 @@ class TableViewController: UITableViewController, SettingViewControllerDelegate 
             guard let vc = segue.destination as? SecondViewController else { return }
             vc.delegate = self
             vc.diary = sender as? Diary 
-        } else  if segue.identifier == "showSettings" {
-            let vc = segue.destination as? SettingsViewController
-            vc?.delegate = self
         }
     }
 
@@ -67,7 +64,7 @@ class TableViewController: UITableViewController, SettingViewControllerDelegate 
         
         let diary = diaries[indexPath.row]
         cell.nameLabel.text = diary.name
-        cell.descriptionLabel.text = diary.direction
+        cell.descriptionLabel.text = diary.formatDate()
         
         return cell
     }
@@ -106,19 +103,5 @@ extension TableViewController: SecondViewControllerDelegate {
     }
 }
 
-extension TableViewController: SettingViewControllerDelegate {
-    func date(_ : Diary) {
-         func tableView(_ tableView: UITableView,
-                                didSelectRowAt indexPath: IndexPath) {
-            if indexPath.row == 0 {
-            
-                print("row = 0")
-            } else if indexPath.row == 1 {
-                print("row = 1")
-            }
-            
-        }
-    }
-}
 
 

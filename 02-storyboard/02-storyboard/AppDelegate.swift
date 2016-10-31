@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        
 //        controller.managedObjectContext = self.persistentContainer.viewContext
+        
+        if UserDefaults.standard.string(forKey: kDateFormat) == nil {
+           UserDefaults.standard.set("YYYY-MM-dd", forKey: kDateFormat)
+        }
+        
         return true
     }
 

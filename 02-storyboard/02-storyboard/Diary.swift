@@ -11,9 +11,9 @@ import CoreData
 
 class Diary: Equatable {
     var name: String?
-    var direction: String?
+    var direction: Date?
     
-    init(name: String? = nil, direction: String? = nil) {
+    init(name: String? = nil, direction: Date? = nil) {
         self.name = name
         self.direction = direction
     }
@@ -22,4 +22,13 @@ class Diary: Equatable {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
     
+    
+    func formatDate() -> String {
+        let format = DateFormatter()
+        format.dateFormat = UserDefaults.standard.string(forKey: kDateFormat)
+        if let direction = direction {
+            return format.string(from: direction)
+        }
+        return ""
+    }
 }

@@ -37,7 +37,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     func updateFields() {
         if let diary = diary {
             nameTextField?.text = diary.name
-            directionsTextView?.text = diary.direction
+            directionsTextView?.text = diary.formatDate()
         } else {
             nameTextField?.text = ""
             directionsTextView?.text = ""
@@ -73,7 +73,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        diary?.direction = textView.text
+//        diary?.direction = textView.text
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -89,30 +89,9 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         
     }
     
-    func dateAndTime() -> String {
-        let format = DateFormatter()
-        format.dateFormat = "YYYY-MM-dd HH:mm"
-        return format.string(from: datePicker.date)
-        
-    }
-    
-    func dateOnly() -> String {
-        let format = DateFormatter()
-        format.dateFormat = "YYYY-MM-dd"
-        return format.string(from: datePicker.date)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSettings" {
-            let vc = segue.destination as? SettingsViewController
-            vc?.delegate = self
-        }
-    }
-    
     @IBAction func addButtonClicked(_ sender: AnyObject) {
         
         let title = nameTextField.text ?? ""
-        let date = dateOnly()
         
         if diary?.name == nil {
             diary = Diary(name: title)
@@ -123,7 +102,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         let _ = navigationController?.popViewController(animated: true)
                self.dismiss(animated: true, completion: nil)
         
-        diary?.direction = String(describing: date)
+        diary?.direction = datePicker.date
         
         doneDidPressed()
         delegate?.didSaveDiary(diary!)

@@ -8,13 +8,9 @@
 
 import UIKit
 
-protocol SettingViewControllerDelegate: class {
-    func date(_ : Diary)
-}
+let kDateFormat = "kDateFormat"
 
 class SettingsViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
-    
-    var delegate: SettingViewControllerDelegate?
     
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
@@ -39,11 +35,17 @@ class SettingsViewController: UITableViewController, UITextViewDelegate, UITextF
                 cell.accessoryType = row == indexPath.row ? .checkmark : .none
             }
         }
-        delegate?.date(Diary)
+        
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0: UserDefaults.standard.set("YYYY-MM-dd HH:mm", forKey: kDateFormat)
+            case 1: UserDefaults.standard.set("YYYY-MM-dd", forKey: kDateFormat)
+            default: return
+            }
+        }
     }
     
     @IBAction func doneButtoneClicked(_sender: UIBarButtonItem) {
-        print("done button clicked")
         let _ = navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }

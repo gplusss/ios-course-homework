@@ -227,7 +227,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2xg-HB-06G">
-                                                    <rect key="frame" x="33" y="8" width="305" height="139"/>
+                                                    <rect key="frame" x="32" y="8" width="305" height="139"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="498914372.89431798">
                                                         <!--2016-10-23 11:19:32 +0000-->
