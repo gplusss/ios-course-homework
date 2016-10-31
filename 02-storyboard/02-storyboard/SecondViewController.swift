@@ -14,10 +14,9 @@ protocol SecondViewControllerDelegate: class {
 }
 
 class SecondViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
-    
-    weak var delegate: SecondViewControllerDelegate?
+        
     let segmentController = UISegmentedControl()
-    
+    var delegate: SecondViewControllerDelegate?
     
     func weatherController(_ sender: UISegmentedControl) {
         
@@ -61,8 +60,6 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         
         segmentController.addTarget(self, action: #selector(SecondViewController.weatherController(_:)), for: UIControlEvents.valueChanged)
         
-        //segmentController.fr
-        
         segmentController.frame = CGRect(x: 200, y: 30, width: 200, height: 30)
         segmentController.insertSegment(with: UIImage(named: "weather_rain"), at: 0, animated: true)
         segmentController.insertSegment(with: UIImage(named: "weather_snow"), at: 1, animated: true)
@@ -88,11 +85,6 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         // Dispose of any resources that can be recreated.
     }
     
-    func dateFormat() {
-        
-        
-    }
-    
     @IBAction func weatherSegmentController(_sender: UISegmentedControl) {
         
     }
@@ -110,6 +102,12 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         return format.string(from: datePicker.date)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSettings" {
+            let vc = segue.destination as? SettingsViewController
+            vc?.delegate = self
+        }
+    }
     
     @IBAction func addButtonClicked(_ sender: AnyObject) {
         
@@ -129,6 +127,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         
         doneDidPressed()
         delegate?.didSaveDiary(diary!)
+        
         
         self.dismiss(animated: true, completion: nil)
     }

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings View Controller-->
+        <!--Title-->
         <scene sceneID="se3-X8-Ehd">
             <objects>
                 <tableViewController id="Oix-q9-h5G" customClass="SettingsViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,6 +96,18 @@
                             <outlet property="delegate" destination="Oix-q9-h5G" id="QyA-Fa-Jh8"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="S7W-YE-0Y8">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="lPp-zO-g1D">
+                            <connections>
+                                <action selector="doneButtoneClickedWith_sender:" destination="Oix-q9-h5G" id="qaU-C6-Coq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="doneButton" destination="lPp-zO-g1D" id="VjS-8F-Rw3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IKR-nk-gsx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -147,7 +159,7 @@
                     <navigationItem key="navigationItem" id="nM0-if-N9i">
                         <barButtonItem key="leftBarButtonItem" image="settings" id="meJ-2a-p0R">
                             <connections>
-                                <segue destination="Oix-q9-h5G" kind="showDetail" identifier="showSettings" id="f92-xi-Etv"/>
+                                <segue destination="Oix-q9-h5G" kind="show" identifier="showSettings" id="f92-xi-Etv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LUQ-Gw-DgX"/>

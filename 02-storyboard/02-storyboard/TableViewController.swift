@@ -14,7 +14,6 @@ class TableViewController: UITableViewController {
 
     fileprivate var diaries = [Diary]()
     
-    
     fileprivate var _displayedRecipes: [Diary]?
 
     
@@ -32,7 +31,10 @@ class TableViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             guard let vc = segue.destination as? SecondViewController else { return }
             vc.delegate = self
-            vc.diary = sender as? Diary //edit by Khomenko
+            vc.diary = sender as? Diary 
+        } else  if segue.identifier == "showSettings" {
+            let vc = segue.destination as? SettingsViewController
+            vc?.delegateSettings = self
         }
     }
 
@@ -40,6 +42,7 @@ class TableViewController: UITableViewController {
         self.title = "Diary"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         self.navigationItem.rightBarButtonItem = addButton
+        
        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -104,12 +107,18 @@ extension TableViewController: SecondViewControllerDelegate {
 }
 
 extension TableViewController: SettingViewControllerDelegate {
-    func date() {
-        
+    func date(_ : Diary) {
+         func tableView(_ tableView: UITableView,
+                                didSelectRowAt indexPath: IndexPath) {
+            if indexPath.row == 0 {
+            
+                print("row = 0")
+            } else if indexPath.row == 1 {
+                print("row = 1")
+            }
+            
+        }
     }
 }
-
-
-
 
 
