@@ -14,7 +14,7 @@ protocol SettingViewControllerDelegate: class {
 
 class SettingsViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
     
-    var delegateSettings: SettingViewControllerDelegate?
+    var delegate: SettingViewControllerDelegate?
     
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
@@ -39,6 +39,7 @@ class SettingsViewController: UITableViewController, UITextViewDelegate, UITextF
                 cell.accessoryType = row == indexPath.row ? .checkmark : .none
             }
         }
+        delegate?.date(Diary)
     }
     
     @IBAction func doneButtoneClicked(_sender: UIBarButtonItem) {

@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import CoreData
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, SettingViewControllerDelegate {
 
     fileprivate var diaries = [Diary]()
     
@@ -34,7 +34,7 @@ class TableViewController: UITableViewController {
             vc.diary = sender as? Diary 
         } else  if segue.identifier == "showSettings" {
             let vc = segue.destination as? SettingsViewController
-            vc?.delegateSettings = self
+            vc?.delegate = self
         }
     }
 
