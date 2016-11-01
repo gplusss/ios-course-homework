@@ -21,8 +21,7 @@ class Diary: Equatable {
     static func ==(lhs: Diary, rhs: Diary) -> Bool {
         return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
-    
-    
+        
     func formatDate() -> String {
         let format = DateFormatter()
         format.dateFormat = UserDefaults.standard.string(forKey: kDateFormat)

@@ -11,6 +11,7 @@ import UIKit
 
 protocol SecondViewControllerDelegate: class {
     func didSaveDiary(_ diary: Diary)
+    func getImage(_ image: UISegmentedControl)
 }
 
 class SecondViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
@@ -48,9 +49,26 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         view.endEditing(true)
     }
     
+    enum Image: Int {
+        case image1, image2, image3
+    }
+    
+    func changeImageView(_ sender: UISegmentedControl) {
+        if let image = Image(rawValue: segmentController.selectedSegmentIndex) {
+            switch image {
+            case .image1: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "rain"))
+            case .image2: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "shower"))
+            case .image3: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "storm"))
+                break
+                
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+
         if diary?.name != nil {
             saveButton.setTitle("EDIT", for: UIControlState())
         } else {
@@ -58,14 +76,13 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         }
         updateFields()
         
-        segmentController.addTarget(self, action: #selector(SecondViewController.weatherController(_:)), for: UIControlEvents.valueChanged)
-        
         segmentController.frame = CGRect(x: 200, y: 30, width: 200, height: 30)
         segmentController.insertSegment(with: UIImage(named: "weather_rain"), at: 0, animated: true)
         segmentController.insertSegment(with: UIImage(named: "weather_snow"), at: 1, animated: true)
         segmentController.insertSegment(with: UIImage(named: "weather_storm"), at: 2, animated: true)
-        self.navigationItem.titleView = segmentController
         
+        segmentController.addTarget(self, action: #selector(SecondViewController.changeImageView(_:)), for: UIControlEvents.valueChanged)
+        self.navigationItem.titleView = segmentController        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

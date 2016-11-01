@@ -16,11 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        let navigationController = self.window!.rootViewController as! UINavigationController
-//        let controller = navigationController.topViewController as! TableViewController
-//        
-//        
-//        controller.managedObjectContext = self.persistentContainer.viewContext
         
         if UserDefaults.standard.string(forKey: kDateFormat) == nil {
            UserDefaults.standard.set("YYYY-MM-dd", forKey: kDateFormat)

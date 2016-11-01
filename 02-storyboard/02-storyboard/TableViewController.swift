@@ -12,10 +12,41 @@ import CoreData
 
 class TableViewController: UITableViewController {
 
-    fileprivate var diaries = [Diary]()
+    fileprivate var diaries = [NSManagedObject]()
     
-    fileprivate var _displayedRecipes: [Diary]?
+    fileprivate var _displayedRecipes: [NSManagedObject]?
 
+    
+    func saveDiary(name: String) {
+        
+        let appDelegate =
+            UIApplication.shared.delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        
+        let entity =  NSEntityDescription.entityForName("Diary",
+                                                        inManagedObjectContext:managedContext)
+        
+        let name = NSManagedObject(entity: entity!,
+                                     insertIntoManagedObjectContext: managedContext)
+        let formatDate = NSManagedObject(entity: entity!,
+                                   insertIntoManagedObjectContext: managedContext)
+        
+        name.setValue(name, forKey: "name")
+        formatDate.setValue(name, forKey: "formatDate")
+        
+        
+        do {
+            try managedContext.save()
+            
+            diaries.append(name)
+            diaries.append(formatDate)
+            
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
     
     func addTapped() {
         performSegue(withIdentifier: "showDetail", sender: nil)
@@ -23,7 +54,7 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    func displayedDiaryAtIndexPath(_ indexPath: IndexPath) -> Diary {
+    func displayedDiaryAtIndexPath(_ indexPath: IndexPath) -> NSManagedObject {
         return diaries[(indexPath as NSIndexPath).row]
     }
     
@@ -31,7 +62,7 @@ class TableViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             guard let vc = segue.destination as? SecondViewController else { return }
             vc.delegate = self
-            vc.diary = sender as? Diary 
+            vc.diary = sender as? NSManagedObject 
         }
     }
 
@@ -46,7 +77,28 @@ class TableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
+        
+        let appDelegate =
+            UIApplication.shared.delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Diary")
+        
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            diaries = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        
+        
+        
+        
         tableView?.reloadData()
     }
 
@@ -63,8 +115,13 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         
         let diary = diaries[indexPath.row]
-        cell.nameLabel.text = diary.name
-        cell.descriptionLabel.text = diary.formatDate()
+        
+        cell.nameLabel.text = diary.value(forKey: "name") as! String?
+        cell.descriptionLabel.text = diary.value(forKey: "formatDate") as! String?
+        //cell.nameLabel.text = diary.name
+        //cell.descriptionLabel.text = diary.formatDate()
+        //cell.backgroundView = UIImageView(image: #imageLiteral(resourceName: "rain"))
+    
         
         return cell
     }
@@ -92,7 +149,7 @@ class TableViewController: UITableViewController {
 }
 
 extension TableViewController: SecondViewControllerDelegate {
-    func didSaveDiary(_ diary: Diary) {
+    func didSaveDiary(_ diary: NSManagedObject) {
         let exist = diaries.contains { (diaryObj) -> Bool in
             diaryObj == diary
         }
@@ -100,6 +157,10 @@ extension TableViewController: SecondViewControllerDelegate {
             diaries.append(diary)
         }
         tableView.reloadData()
+    }
+    
+    func getImage(_ image: UISegmentedControl) {
+        
     }
 }
 
