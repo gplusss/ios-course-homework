@@ -18,6 +18,7 @@
 		408316B11DC0E4650019A25F /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408316B01DC0E4650019A25F /* SettingsViewCell.swift */; };
 		40B95D3F1DBBCDF70033DEB0 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B95D3E1DBBCDF70033DEB0 /* Diary.swift */; };
 		40B95D411DBBCE700033DEB0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B95D401DBBCE700033DEB0 /* SecondViewController.swift */; };
+		F8B55D858BF48483DCF775AE /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69386261BC31A3E442A517F5 /* Pods_Diary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,9 @@
 		408316B01DC0E4650019A25F /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		40B95D3E1DBBCDF70033DEB0 /* Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		40B95D401DBBCE700033DEB0 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		69386261BC31A3E442A517F5 /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97D57C63DA8E86134FFAB620 /* Pods-Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.debug.xcconfig"; sourceTree = "<group>"; };
+		E731A43E4D1CC6C47A67C7D7 /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8B55D858BF48483DCF775AE /* Pods_Diary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +57,8 @@
 			children = (
 				404278761DB7E4E7003EEF80 /* Diary */,
 				404278751DB7E4E7003EEF80 /* Products */,
+				D8359CFD466C4B431BDE1658 /* Pods */,
+				CF9CD64076AEF94FE757B5EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +90,23 @@
 			path = "02-storyboard";
 			sourceTree = "<group>";
 		};
+		CF9CD64076AEF94FE757B5EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69386261BC31A3E442A517F5 /* Pods_Diary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8359CFD466C4B431BDE1658 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97D57C63DA8E86134FFAB620 /* Pods-Diary.debug.xcconfig */,
+				E731A43E4D1CC6C47A67C7D7 /* Pods-Diary.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -90,9 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 404278861DB7E4E8003EEF80 /* Build configuration list for PBXNativeTarget "Diary" */;
 			buildPhases = (
+				0E5B3E4E27BB9C0CF514CADC /* Check Pods Manifest.lock */,
 				404278701DB7E4E7003EEF80 /* Sources */,
 				404278711DB7E4E7003EEF80 /* Frameworks */,
 				404278721DB7E4E7003EEF80 /* Resources */,
+				358FFD77D102840156628D86 /* Embed Pods Frameworks */,
+				319897471D00C4EE8A6E99E9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -116,6 +143,7 @@
 					404278731DB7E4E7003EEF80 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = D679G69XAU;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -150,6 +178,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E5B3E4E27BB9C0CF514CADC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		319897471D00C4EE8A6E99E9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Diary/Pods-Diary-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		358FFD77D102840156628D86 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Diary/Pods-Diary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		404278701DB7E4E7003EEF80 /* Sources */ = {
@@ -286,7 +362,9 @@
 		};
 		404278871DB7E4E8003EEF80 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97D57C63DA8E86134FFAB620 /* Pods-Diary.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D679G69XAU;
 				INFOPLIST_FILE = "02-storyboard/Info.plist";
@@ -299,7 +377,9 @@
 		};
 		404278881DB7E4E8003EEF80 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E731A43E4D1CC6C47A67C7D7 /* Pods-Diary.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D679G69XAU;
 				INFOPLIST_FILE = "02-storyboard/Info.plist";

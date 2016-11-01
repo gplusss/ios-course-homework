@@ -7,22 +7,20 @@
 //
 
 import Foundation
-import CoreData
+import RealmSwift
 
-class Diary: Equatable {
-    var name: String?
-    var direction: Date?
+class Diary: Object/*, Equatable*/ {
+    dynamic var name: String?
+    dynamic var direction: Date?
     
-    init(name: String? = nil, direction: Date? = nil) {
+    convenience init(name: String? = nil, direction: Date? = nil) {
+        self.init()
         self.name = name
         self.direction = direction
     }
     
-    static func ==(lhs: Diary, rhs: Diary) -> Bool {
-        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
-    }
-        
-    func formatDate() -> String {
+    
+      func formatDate() -> String {
         let format = DateFormatter()
         format.dateFormat = UserDefaults.standard.string(forKey: kDateFormat)
         if let direction = direction {
@@ -31,3 +29,4 @@ class Diary: Equatable {
         return ""
     }
 }
+

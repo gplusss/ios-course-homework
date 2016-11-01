@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 protocol SecondViewControllerDelegate: class {
     func didSaveDiary(_ diary: Diary)
@@ -110,8 +111,14 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         
         let title = nameTextField.text ?? ""
         
+        let realm = try! Realm()
+        realm.beginWrite()
+        
         if diary?.name == nil {
             diary = Diary(name: title)
+            
+            realm.add(diary!)
+            
         } else {
             diary?.name = title
         }
@@ -124,6 +131,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         doneDidPressed()
         delegate?.didSaveDiary(diary!)
         
+        try! realm.commitWrite()
         
         self.dismiss(animated: true, completion: nil)
     }
