@@ -10,10 +10,13 @@ import UIKit
 import Foundation
 import RealmSwift
 
+enum Days: Int {
+    case today, yesterday, this_week, earlier
+}
+
 class TableViewController: UITableViewController {
 
-    fileprivate var diaries = [Diary]()
-    
+    fileprivate var diaries: Results<Diary>?
     
     func addTapped() {
         performSegue(withIdentifier: "showDetail", sender: nil)
@@ -21,8 +24,8 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    func displayedDiaryAtIndexPath(_ indexPath: IndexPath) -> Diary {
-        return diaries[(indexPath as NSIndexPath).row]
+    func displayedDiaryAtIndexPath(_ indexPath: IndexPath) -> Diary? {
+        return diaries?[indexPath.row]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,11 +44,10 @@ class TableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
         
         let realm = try! Realm()
-        for diary in realm.objects(Diary.self) {
-            diaries.append(diary)
-        }
-        tableView.reloadData()
         
+        diaries = realm.objects(Diary.self).sorted(byProperty: "direction", ascending: true)
+      
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,22 +63,24 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diaries.count
+        return diaries?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         
-        let diary = diaries[indexPath.row]
+        guard let diary = diaries?[indexPath.row] else { return cell }
 
         cell.nameLabel.text = diary.name
         cell.descriptionLabel.text = diary.formatDate()
-        
+        cell.imageLabel.image = UIImage(named: "weather_sun")
+        cell.imageLabel.backgroundColor = UIColor.gray  
+        cell.imageLabel.layer.cornerRadius = 0.5
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let diary = diaries[indexPath.row]
+        let diary = diaries?[indexPath.row]
         performSegue(withIdentifier: "showDetail", sender: diary)
     }
     
@@ -86,25 +90,27 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { ( deleteAction, indexPath )  -> Void in
-            self.diaries.remove(at: indexPath.row)
+            if let diary = self.diaries?[indexPath.row] {
+                
+                let realm = try! Realm()
+                
+                try! realm.write {
+                    realm.delete(diary)
+                }
+            }
+
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
         }
-
-            deleteAction.backgroundColor = UIColor.red
+        
+        deleteAction.backgroundColor = UIColor.red
         return [deleteAction]
     }
 }
 
 extension TableViewController: SecondViewControllerDelegate {
     func didSaveDiary(_ diary: Diary) {
-        let exist = diaries.contains { (diaryObj) -> Bool in
-            diaryObj == diary
-        }
-        if(!exist) {
-            diaries.append(diary)
-        }
         tableView.reloadData()
     }
     

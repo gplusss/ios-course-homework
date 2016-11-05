@@ -1,14 +1,12 @@
 //
 //  AppDelegate.swift
-//  Diary
+//  DiaryMVC
 //
-//  Created by Vladimir Saprykin on 19.10.16.
+//  Created by Vladimir Saprykin on 05.11.16.
 //  Copyright © 2016 Vladimir Saprykin. All rights reserved.
 //
 
 import UIKit
-import CoreData
-import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,34 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        
-        if UserDefaults.standard.string(forKey: kDateFormat) == nil {
-           UserDefaults.standard.set("YYYY-MM-dd", forKey: kDateFormat)
-        }
-        
-        let config = Realm.Configuration(
-            // Set the new schema version. This must be greater than the previously used
-            // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 3,
-            
-            // Set the block which will be called automatically when opening a Realm with
-            // a schema version lower than the one set above
-            migrationBlock: { migration, oldSchemaVersion in
-                // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 1) {
-                    // Nothing to do!
-                    // Realm will automatically detect new properties and removed properties
-                    // And will update the schema on disk automatically
-                }
-        })
-        
-        // Tell Realm to use this new configuration object for the default Realm
-        Realm.Configuration.defaultConfiguration = config
-        
+        // Override point for customization after application launch.
         return true
     }
-    
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

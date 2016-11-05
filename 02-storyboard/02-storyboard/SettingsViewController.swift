@@ -14,10 +14,29 @@ class SettingsViewController: UITableViewController, UITextViewDelegate, UITextF
     
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
+    @IBOutlet weak var dateCell: SettingsViewCell?
+    @IBOutlet weak var dateAndTimeCell: SettingsViewCell?
+    
+    var checked = Bool()
+    
+        func tapedCheck() {
+          if checked == true {
+            dateCell?.accessoryType = .checkmark
+            dateAndTimeCell?.accessoryType = .checkmark
+          } else if checked == false {
+            dateCell?.accessoryType = .none
+            dateAndTimeCell?.accessoryType = .none
+            }
+        }
+    
     override func viewDidLoad() {
         self.title = "Settings"
         
         super.viewDidLoad()
+        
+        //dateCell?.accessoryType = .checkmark
+        tapedCheck()
+ 
     }
 
     override func didReceiveMemoryWarning() {

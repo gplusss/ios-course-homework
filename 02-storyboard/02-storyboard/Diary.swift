@@ -9,9 +9,19 @@
 import Foundation
 import RealmSwift
 
-class Diary: Object/*, Equatable*/ {
+class Diary: Object {
+    enum Weather: String {
+        case rain, shower, storm
+    }
+    
+    dynamic var id = UUID().uuidString
     dynamic var name: String?
     dynamic var direction: Date?
+    fileprivate dynamic var weatherRaw = Weather.rain.rawValue
+    var weather: Weather {
+        set { self.weatherRaw = newValue.rawValue }
+        get { return Weather(rawValue: weatherRaw)! }
+    }
     
     convenience init(name: String? = nil, direction: Date? = nil) {
         self.init()
@@ -19,8 +29,7 @@ class Diary: Object/*, Equatable*/ {
         self.direction = direction
     }
     
-    
-      func formatDate() -> String {
+    func formatDate() -> String {
         let format = DateFormatter()
         format.dateFormat = UserDefaults.standard.string(forKey: kDateFormat)
         if let direction = direction {
@@ -28,5 +37,7 @@ class Diary: Object/*, Equatable*/ {
         }
         return ""
     }
+    
+    override class func primaryKey() -> String? { return "id" }
 }
 

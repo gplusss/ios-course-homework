@@ -50,20 +50,36 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         view.endEditing(true)
     }
     
-    enum Image: Int {
-        case image1, image2, image3
-    }
-    
     func changeImageView(_ sender: UISegmentedControl) {
-        if let image = Image(rawValue: segmentController.selectedSegmentIndex) {
-            switch image {
-            case .image1: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "rain"))
-            case .image2: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "shower"))
-            case .image3: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "storm"))
-                break
+      
+//        let realm = try! Realm()
+//        
+//        if Diary.Weather(rawValue: "rain") != nil {
+//          realm.objects(Diary.Weather(rawValue: "rain"))
+//        }
+//        let shower = Diary.Weather(rawValue: "shower")
+//        let storm = Diary.Weather(rawValue: "storm")
+        
                 
-            }
-        }
+//        if let index = Diary.Weather(rawValue: "rain") {
+//            switch index {
+//            case .rain: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "rain"))
+//            case .shower: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "shower"))
+//            case .storm: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "storm"))
+//            default:
+//                break
+//            }
+//        }
+        
+//         let index = segmentController.selectedSegmentIndex
+//            switch index {
+//            case 0: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "rain"))
+//            case 1: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "shower"))
+//            case 2: tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "storm"))
+//            default:
+//                break
+//                
+//        }
     }
     
     override func viewDidLoad() {
@@ -116,24 +132,20 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         
         if diary?.name == nil {
             diary = Diary(name: title)
-            
-            realm.add(diary!)
-            
         } else {
             diary?.name = title
         }
-        
-        let _ = navigationController?.popViewController(animated: true)
-               self.dismiss(animated: true, completion: nil)
-        
+    
+
         diary?.direction = datePicker.date
         
         doneDidPressed()
         delegate?.didSaveDiary(diary!)
         
+        realm.add(diary!, update: true)
         try! realm.commitWrite()
         
-        self.dismiss(animated: true, completion: nil)
+        let _ = navigationController?.popViewController(animated: true)
     }
     
     func datePickerValueChanged(sender: UIDatePicker) {
