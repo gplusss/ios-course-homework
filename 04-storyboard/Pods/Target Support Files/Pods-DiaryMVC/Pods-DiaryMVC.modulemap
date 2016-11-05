@@ -1,0 +1,6 @@
+framework module Pods_DiaryMVC {
+  umbrella header "Pods-DiaryMVC-umbrella.h"
+
+  export *
+  module * { export * }
+}
