@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xLu-6f-h7C" id="AT5-B7-bVf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date And Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kP5-IH-1Xb">
@@ -37,14 +37,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dateOnly" destination="O4T-3Z-nzp" id="GK1-Al-mY9"/>
+                                            <outlet property="dateAndTime" destination="kP5-IH-1Xb" id="aNp-ge-ni2"/>
+                                            <outlet property="dateOnly" destination="O4T-3Z-nzp" id="D2b-r2-wL9"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1ep-vX-TyZ" customClass="SettingsViewCell" customModule="Diary" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1ep-vX-TyZ" id="trr-jh-G0H">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Only" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4T-3Z-nzp">
@@ -56,9 +57,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dateAndTime" destination="kP5-IH-1Xb" id="6NW-Vh-S5q"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -68,7 +66,7 @@
                                         <rect key="frame" x="0.0" y="200" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aWt-AQ-c4J" id="TaI-Lg-seV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5VX-H7-NPJ">
@@ -146,15 +144,15 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDP-p6-LWs">
-                                            <rect key="frame" x="290" y="3" width="40" height="40"/>
+                                            <rect key="frame" x="285" y="-2" width="42" height="42"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="D9u-b2-UH2" id="pqr-y9-M8s"/>
-                                    <outlet property="imageLabel" destination="BDP-p6-LWs" id="A7o-1c-XWR"/>
-                                    <outlet property="nameLabel" destination="hGs-Hf-rst" id="dlW-I8-bYz"/>
+                                    <outlet property="descriptionLabel" destination="D9u-b2-UH2" id="Pfk-Sf-rE2"/>
+                                    <outlet property="imageLabel" destination="BDP-p6-LWs" id="7IT-St-uaH"/>
+                                    <outlet property="nameLabel" destination="hGs-Hf-rst" id="xk9-j6-AsJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -193,7 +191,7 @@
                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                             <state key="normal" title="SAVE"/>
                             <connections>
-                                <action selector="addButtonClicked:" destination="Q3F-Ui-2gg" eventType="touchUpInside" id="pER-ln-bSW"/>
+                                <action selector="addButtonClicked:" destination="Q3F-Ui-2gg" eventType="touchUpInside" id="bme-SD-1a5"/>
                             </connections>
                         </button>
                         <sections>
@@ -235,14 +233,11 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2xg-HB-06G">
-                                                    <rect key="frame" x="32" y="8" width="305" height="139"/>
+                                                    <rect key="frame" x="30" y="8" width="305" height="139"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="498914372.89431798">
                                                         <!--2016-10-23 11:19:32 +0000-->
                                                     </date>
-                                                    <connections>
-                                                        <action selector="datePickerWithSender:" destination="Q3F-Ui-2gg" eventType="valueChanged" id="l6k-Mc-DfT"/>
-                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -259,10 +254,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="datePicker" destination="2xg-HB-06G" id="792-ve-bAL"/>
-                        <outlet property="directionsTextView" destination="2Gt-4t-TF6" id="Znv-v7-SFz"/>
-                        <outlet property="nameTextField" destination="FjR-qJ-xxR" id="BNk-Fp-4Gn"/>
-                        <outlet property="saveButton" destination="GqC-ZZ-prG" id="hdE-SD-GVf"/>
+                        <outlet property="datePicker" destination="2xg-HB-06G" id="8tz-TM-DPG"/>
+                        <outlet property="directionsTextView" destination="2Gt-4t-TF6" id="fRq-xz-y5u"/>
+                        <outlet property="nameTextField" destination="FjR-qJ-xxR" id="bhF-a1-SFz"/>
+                        <outlet property="saveButton" destination="GqC-ZZ-prG" id="aBy-Ri-Jl7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5F-yW-YFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
