@@ -21,7 +21,7 @@ class TableViewController: UITableViewController {
     fileprivate var diaries: Results<Diary>?
     
     func addTapped() {
-        //performSegue(withIdentifier: "showDetail", sender: nil)
+        performSegue(withIdentifier: "showDetail", sender: nil)
         
         super.viewDidLoad()
     }

@@ -1,0 +1,29 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0B29AD40142FE91E998049C78B10B0621BACD82C" : 9223372036854775807,
+    "D085F2C33360D8E4957F1DBB3DA57A885D0FE011" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F50C42C6-5D30-44D9-92EF-5F26F0EE8349",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0B29AD40142FE91E998049C78B10B0621BACD82C" : "..",
+    "D085F2C33360D8E4957F1DBB3DA57A885D0FE011" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DiaryMVC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DiaryMVC.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gplusss\/ios-course-homework.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B29AD40142FE91E998049C78B10B0621BACD82C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/gplusss\/ios-course-homework\/tree\/master\/04-storyboard",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D085F2C33360D8E4957F1DBB3DA57A885D0FE011"
+    }
+  ]
+}

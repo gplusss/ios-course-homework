@@ -16,11 +16,8 @@
                     <containerView key="view" opaque="NO" contentMode="scaleToFill" id="xF2-9Z-m1o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <connections>
-                            <segue destination="cUS-RD-8Df" kind="embed" id="IcD-9y-oxi"/>
-                        </connections>
                     </containerView>
-                    <tabBarItem key="tabBarItem" title="Detail" id="giZ-dg-Bqf"/>
+                    <tabBarItem key="tabBarItem" title="Detail" image="tab_weather_selected" selectedImage="tab_weather" id="giZ-dg-Bqf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Rn-Xk-Bs8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -35,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TP6-TX-D4H">
-                            <rect key="frame" x="0.0" y="331" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="496" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="SAVE"/>
                             <connections>
@@ -92,6 +89,24 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="ПОГОДА" id="ayb-yM-v0p">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lOX-B0-lV4">
+                                        <rect key="frame" x="0.0" y="370" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lOX-B0-lV4" id="7ka-JA-ZPo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oNJ-6A-Dge">
+                                                    <rect key="frame" x="170" y="0.0" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="cUS-RD-8Df" id="Hge-3V-pI9"/>
@@ -103,11 +118,12 @@
                         <outlet property="directionsTextView" destination="XU5-0F-lql" id="rhD-tJ-Wd8"/>
                         <outlet property="nameTextField" destination="vec-LI-Blb" id="pzR-Fb-7J8"/>
                         <outlet property="saveButton" destination="TP6-TX-D4H" id="uF7-3X-Rae"/>
+                        <outlet property="weatherImage" destination="oNJ-6A-Dge" id="0PR-Bt-arF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gfc-e5-VhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-18.399999999999999" y="694.90254872563719"/>
+            <point key="canvasLocation" x="1828" y="-19"/>
         </scene>
         <!--DIARY-->
         <scene sceneID="O2O-8k-FJX">
@@ -158,6 +174,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="DIARY" id="TxO-ep-Sue"/>
+                    <connections>
+                        <segue destination="cUS-RD-8Df" kind="show" identifier="showDetail" id="Xsw-gP-nEk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LdR-eP-Hgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,7 +204,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="Uen-r9-ia1"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="tab_settings_selected" selectedImage="tab_settings" id="Uen-r9-ia1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aar-QG-YEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -298,7 +317,7 @@
         <scene sceneID="H4N-mN-Kfr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wC8-pk-uKK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Diary" id="Mv7-GC-CZm"/>
+                    <tabBarItem key="tabBarItem" title="Diary" image="tab_main_selected" selectedImage="tab_main" id="Mv7-GC-CZm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F5i-3h-sqq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -314,4 +333,12 @@
             <point key="canvasLocation" x="-18" y="-19"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_main" width="32" height="32"/>
+        <image name="tab_main_selected" width="32" height="32"/>
+        <image name="tab_settings" width="32" height="32"/>
+        <image name="tab_settings_selected" width="32" height="32"/>
+        <image name="tab_weather" width="32" height="32"/>
+        <image name="tab_weather_selected" width="32" height="32"/>
+    </resources>
 </document>
