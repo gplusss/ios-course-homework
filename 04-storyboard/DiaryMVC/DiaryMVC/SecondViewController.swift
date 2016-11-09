@@ -16,19 +16,19 @@ protocol SecondViewControllerDelegate: class {
 }
 
 class SecondViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
-    
+        
     let segmentController = UISegmentedControl()
     var delegate: SecondViewControllerDelegate?
     
     func weatherController(_ sender: UISegmentedControl) {
-//        let index = segmentController.selectedSegmentIndex
-//        switch index {
-//        case 0: segmentController.insertSegment(with: UIImage(named: "weather_rain"), at: 0, animated: true)
-//        case 1: segmentController.insertSegment(with: UIImage(named: "weather_snow"), at: 1, animated: true)
-//        case 2: segmentController.insertSegment(with: UIImage(named: "weather_storm"), at: 2, animated: true)
-//        default:
-//            break
-//        }
+        let index = segmentController.selectedSegmentIndex
+        switch index {
+        case 0: weatherImage.image = UIImage(named: "weather_sun")
+        case 1: weatherImage.image = UIImage(named: "weather_snow")
+        case 2: weatherImage.image = UIImage(named: "weather_storm")
+        default:
+            break
+        }
         
     }
     
@@ -50,10 +50,11 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         if let diary = diary {
             nameTextField?.text = diary.name
             directionsTextView?.text = diary.formatDate()
-            
+
         } else {
             nameTextField?.text = ""
             directionsTextView?.text = ""
+            
         }
     }
     
@@ -73,11 +74,12 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         updateFields()
         
         segmentController.frame = CGRect(x: 200, y: 30, width: 200, height: 30)
-        segmentController.insertSegment(with: UIImage(named: "weather_rain"), at: 0, animated: true)
+        segmentController.insertSegment(with: UIImage(named: "weather_sun"), at: 0, animated: true)
         segmentController.insertSegment(with: UIImage(named: "weather_snow"), at: 1, animated: true)
         segmentController.insertSegment(with: UIImage(named: "weather_storm"), at: 2, animated: true)
         
         segmentController.addTarget(self, action: #selector(SecondViewController.weatherController(_:)), for: UIControlEvents.valueChanged)
+        
         self.navigationItem.titleView = segmentController
     }
     
@@ -86,7 +88,6 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        //        diary?.direction = textView.text
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -98,18 +99,6 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func weatherSegmentController(_sender: UISegmentedControl) {
-        let index = segmentController.selectedSegmentIndex
-        
-        switch index {
-        case 0: weatherImage.image = UIImage(named: "weather_rain")
-        case 1: weatherImage.image = UIImage(named: "weather_snow")
-        case 2: weatherImage.image = UIImage(named: "weather_storm")
-        default:
-            break
-        }
-        
-    }
     
     @IBAction func addButtonClicked(_ sender: AnyObject) {
         
@@ -119,14 +108,13 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         realm.beginWrite()
         
         if diary?.name == nil {
-            diary = Diary(name: title)
-        } else {
-            diary?.name = title
+            diary = Diary()
         }
+        
+        diary?.name = title
         
         
         diary?.direction = datePicker.date
-        
         doneDidPressed()
         delegate?.didSaveDiary(diary!)
         

@@ -18,6 +18,8 @@
 		40A75BB51DCF309E00EE81B1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A75BB41DCF309E00EE81B1 /* SecondViewController.swift */; };
 		40A75BB71DCF337D00EE81B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A75BB61DCF337D00EE81B1 /* SettingsViewController.swift */; };
 		40A75BB91DCF41DB00EE81B1 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A75BB81DCF41DB00EE81B1 /* SettingsViewCell.swift */; };
+		40BC2D701DD32F8800FF06D8 /* DiariesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC2D6F1DD32F8800FF06D8 /* DiariesViewController.swift */; };
+		40BC2D721DD3307E00FF06D8 /* DiariesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC2D711DD3307E00FF06D8 /* DiariesViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		40A75BB41DCF309E00EE81B1 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		40A75BB61DCF337D00EE81B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		40A75BB81DCF41DB00EE81B1 /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
+		40BC2D6F1DD32F8800FF06D8 /* DiariesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiariesViewController.swift; sourceTree = "<group>"; };
+		40BC2D711DD3307E00FF06D8 /* DiariesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiariesViewCell.swift; sourceTree = "<group>"; };
 		7D08A9991366BB20F5E77DE8 /* Pods-DiaryMVC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryMVC.release.xcconfig"; path = "Pods/Target Support Files/Pods-DiaryMVC/Pods-DiaryMVC.release.xcconfig"; sourceTree = "<group>"; };
 		CC21F3A544CF5AF9B42C218E /* Pods_DiaryMVC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryMVC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E14A41FA5CC7BA469C44A2 /* Pods-DiaryMVC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryMVC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DiaryMVC/Pods-DiaryMVC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				40A75BA01DCF296700EE81B1 /* TableViewController.swift */,
 				40A75BB41DCF309E00EE81B1 /* SecondViewController.swift */,
 				40A75BB61DCF337D00EE81B1 /* SettingsViewController.swift */,
+				40BC2D6F1DD32F8800FF06D8 /* DiariesViewController.swift */,
+				40BC2D711DD3307E00FF06D8 /* DiariesViewCell.swift */,
 				40A75BB81DCF41DB00EE81B1 /* SettingsViewCell.swift */,
 				40A75BA21DCF296700EE81B1 /* Main.storyboard */,
 				40A75BA51DCF296700EE81B1 /* Assets.xcassets */,
@@ -232,8 +238,10 @@
 				40A75BA11DCF296700EE81B1 /* TableViewController.swift in Sources */,
 				40A75B9F1DCF296700EE81B1 /* AppDelegate.swift in Sources */,
 				40A75BB51DCF309E00EE81B1 /* SecondViewController.swift in Sources */,
+				40BC2D721DD3307E00FF06D8 /* DiariesViewCell.swift in Sources */,
 				40A75BB31DCF305C00EE81B1 /* Diary.swift in Sources */,
 				40A75BB91DCF41DB00EE81B1 /* SettingsViewCell.swift in Sources */,
+				40BC2D701DD32F8800FF06D8 /* DiariesViewController.swift in Sources */,
 				40A75BB71DCF337D00EE81B1 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

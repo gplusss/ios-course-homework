@@ -17,6 +17,7 @@ enum Days: Int {
 class TableViewController: UITableViewController {
     
     let tapBar = UITabBarController()
+    var delegate: SecondViewControllerDelegate?
         
     fileprivate var diaries: Results<Diary>?
     
@@ -76,9 +77,9 @@ class TableViewController: UITableViewController {
         
         cell.nameTextLabel.text = diary.name
         cell.descriptionTextLable.text = diary.formatDate()
-        cell.imageLabel.image = UIImage(named: "weather_sun")
-        cell.imageLabel.backgroundColor = UIColor.gray
-        //cell.imageLabel.layer.cornerRadius = 0.5
+        cell.imageLabel.layer.cornerRadius = 0.5
+        
+
         return cell
     }
     
@@ -120,7 +121,6 @@ extension TableViewController: SecondViewControllerDelegate {
     }
     
     func getImage(_ image: UISegmentedControl) {
-        
     }
 }
 

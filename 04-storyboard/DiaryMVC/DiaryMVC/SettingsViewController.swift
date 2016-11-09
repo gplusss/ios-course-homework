@@ -8,9 +8,16 @@
 
 import UIKit
 
+
 let kDateFormat = "kDateFormat"
 
+    enum dateSettings: String {
+        case dateOnly, dateAndTime
+    }
+
 class SettingsViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
+    
+
     
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
@@ -22,21 +29,28 @@ class SettingsViewController: UITableViewController, UITextViewDelegate, UITextF
     func tapedCheck() {
         if checked == true {
             dateCell?.accessoryType = .checkmark
-            dateAndTimeCell?.accessoryType = .checkmark
-        } else if checked == false {
-            dateCell?.accessoryType = .none
             dateAndTimeCell?.accessoryType = .none
+        } else {
+            dateCell?.accessoryType = .none
+            dateAndTimeCell?.accessoryType = .checkmark
         }
     }
     
     override func viewDidLoad() {
-        self.title = "Settings"
-        
         super.viewDidLoad()
         
-        //dateCell?.accessoryType = .checkmark
-        tapedCheck()
+        self.title = "Settings"
         
+        
+        let currentFormat = UserDefaults.standard.object(forKey: kDateFormat) as? String
+        
+        if currentFormat == "YYYY-MM-dd HH:mm" {
+            checked = false
+        } else {
+            checked = true
+        }
+        
+        tapedCheck()
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,6 +84,8 @@ class SettingsViewController: UITableViewController, UITextViewDelegate, UITextF
     }
     
     @IBAction func switcher(_ sender: UISwitch) {
+        
+        
         
         if sender.isOn == false {
             self.tableView.backgroundColor = UIColor.red

@@ -9,20 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail-->
-        <scene sceneID="pet-Ss-Dak">
-            <objects>
-                <viewController id="dk2-im-MD1" sceneMemberID="viewController">
-                    <containerView key="view" opaque="NO" contentMode="scaleToFill" id="xF2-9Z-m1o">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    </containerView>
-                    <tabBarItem key="tabBarItem" title="Detail" image="tab_weather_selected" selectedImage="tab_weather" id="giZ-dg-Bqf"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Rn-Xk-Bs8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-970" y="696"/>
-        </scene>
         <!--Second View Controller-->
         <scene sceneID="U01-xK-n3c">
             <objects>
@@ -32,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TP6-TX-D4H">
-                            <rect key="frame" x="0.0" y="496" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="493.5" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="SAVE"/>
                             <connections>
@@ -64,7 +50,7 @@
                             <tableViewSection headerTitle="ДАТА" id="LTC-cl-Qgf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="156" id="z4g-HY-cNf">
-                                        <rect key="frame" x="0.0" y="157" width="375" height="156"/>
+                                        <rect key="frame" x="0.0" y="156" width="375" height="156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z4g-HY-cNf" id="Mev-wf-cD0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
@@ -78,7 +64,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-Cm-0QD">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="373" height="155"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="500130881.44670802">
                                                         <!--2016-11-06 13:14:41 +0000-->
@@ -92,7 +78,7 @@
                             <tableViewSection headerTitle="ПОГОДА" id="ayb-yM-v0p">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lOX-B0-lV4">
-                                        <rect key="frame" x="0.0" y="370" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="368" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lOX-B0-lV4" id="7ka-JA-ZPo">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -104,6 +90,7 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -158,6 +145,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bhW-Pk-sP0">
                                             <rect key="frame" x="235" y="-3" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -180,7 +168,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LdR-eP-Hgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938" y="-19"/>
+            <point key="canvasLocation" x="887" y="-19"/>
+        </scene>
+        <!--Diaries View Controller-->
+        <scene sceneID="3HT-JO-Ver">
+            <objects>
+                <tableViewController id="rNU-rB-eWa" customClass="DiariesViewController" customModule="DiaryMVC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="a6b-0s-57g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="ZJE-I2-bTC" detailTextLabel="cnn-1X-GBy" style="IBUITableViewCellStyleSubtitle" id="gRa-Gg-Aq4" customClass="DiariesViewCell" customModule="DiaryMVC" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gRa-Gg-Aq4" id="yFn-67-fFI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZJE-I2-bTC">
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cnn-1X-GBy">
+                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="ZJE-I2-bTC" id="WSy-Sn-BOh"/>
+                                    <outlet property="timeLabel" destination="cnn-1X-GBy" id="qbN-LK-FjK"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rNU-rB-eWa" id="ybS-Bp-G31"/>
+                            <outlet property="delegate" destination="rNU-rB-eWa" id="aqb-vs-jqc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="bzQ-sL-2jd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dYp-Gk-OZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-31.199999999999999" y="760.56971514242889"/>
         </scene>
         <!--Settings-->
         <scene sceneID="qhQ-uA-fmP">
@@ -237,12 +274,8 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dateAndTime" destination="TUm-H0-AfW" id="Zmj-K8-EkT"/>
-                                            <outlet property="dateOnly" destination="Ph2-tp-Ntp" id="2VR-xr-Oye"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="btQ-IA-4zB">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="btQ-IA-4zB" customClass="SettingsViewCell" customModule="DiaryMVC" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="btQ-IA-4zB" id="YQ5-0q-pDj">
@@ -264,7 +297,7 @@
                             <tableViewSection headerTitle="SWITCH" id="oQt-8z-pvx">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qpY-Gm-HI0" customClass="SettingsViewCell" customModule="DiaryMVC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="200" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qpY-Gm-HI0" id="fnu-jy-ZKy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -289,6 +322,10 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Settings" id="KaF-T4-fJp"/>
+                    <connections>
+                        <outlet property="dateAndTimeCell" destination="j98-34-3ea" id="pZv-du-I0F"/>
+                        <outlet property="dateCell" destination="btQ-IA-4zB" id="NXU-Nx-WJg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fok-u4-JjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -305,8 +342,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="wC8-pk-uKK" kind="relationship" relationship="viewControllers" id="7nP-2g-b8p"/>
-                        <segue destination="dk2-im-MD1" kind="relationship" relationship="viewControllers" id="DHz-uj-zpc"/>
                         <segue destination="ehy-Ok-BII" kind="relationship" relationship="viewControllers" id="uV7-Ul-UYG"/>
+                        <segue destination="Syy-6A-d8K" kind="relationship" relationship="viewControllers" id="vHW-lz-Acw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oik-b4-lHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,13 +369,30 @@
             </objects>
             <point key="canvasLocation" x="-18" y="-19"/>
         </scene>
+        <!--Diaries-->
+        <scene sceneID="HX5-fk-MBD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Syy-6A-d8K" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Diaries" image="tab_settings_selected" id="UY2-eI-gWt"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QjA-NJ-lJP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rNU-rB-eWa" kind="relationship" relationship="rootViewController" id="bmI-cG-yB8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8uG-S9-UdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-970.39999999999998" y="760.56971514242889"/>
+        </scene>
     </scenes>
     <resources>
         <image name="tab_main" width="32" height="32"/>
         <image name="tab_main_selected" width="32" height="32"/>
         <image name="tab_settings" width="32" height="32"/>
         <image name="tab_settings_selected" width="32" height="32"/>
-        <image name="tab_weather" width="32" height="32"/>
-        <image name="tab_weather_selected" width="32" height="32"/>
     </resources>
 </document>

@@ -22,19 +22,24 @@ class SettingsViewController: UITableViewController, UITextViewDelegate, UITextF
         func tapedCheck() {
           if checked == true {
             dateCell?.accessoryType = .checkmark
-            dateAndTimeCell?.accessoryType = .checkmark
+            dateAndTimeCell?.accessoryType = .none
           } else if checked == false {
             dateCell?.accessoryType = .none
-            dateAndTimeCell?.accessoryType = .none
+            dateAndTimeCell?.accessoryType = .checkmark
             }
         }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         self.title = "Settings"
         
-        super.viewDidLoad()
+        let currentFormat = UserDefaults.standard.object(forKey: kDateFormat) as! String
+        if currentFormat == "YYYY-MM-dd HH:mm" {
+            checked = false
+        } else {
+            checked = true
+        }
         
-        //dateCell?.accessoryType = .checkmark
         tapedCheck()
  
     }
