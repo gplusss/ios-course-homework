@@ -11,9 +11,6 @@ import UIKit
 
 let kDateFormat = "kDateFormat"
 
-    enum dateSettings: String {
-        case dateOnly, dateAndTime
-    }
 
 class SettingsViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate {
     

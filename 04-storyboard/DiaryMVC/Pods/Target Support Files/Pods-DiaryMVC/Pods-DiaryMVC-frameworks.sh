@@ -86,8 +86,10 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-DiaryMVC/Realm.framework"
   install_framework "Pods-DiaryMVC/RealmSwift.framework"
+  install_framework "Pods-DiaryMVC/SwiftDate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-DiaryMVC/Realm.framework"
   install_framework "Pods-DiaryMVC/RealmSwift.framework"
+  install_framework "Pods-DiaryMVC/SwiftDate.framework"
 fi

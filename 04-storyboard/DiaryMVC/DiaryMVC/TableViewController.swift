@@ -10,9 +10,7 @@ import UIKit
 import Foundation
 import RealmSwift
 
-enum Days: Int {
-    case today, yesterday, this_week, earlier
-}
+
 
 class TableViewController: UITableViewController {
     
@@ -77,8 +75,6 @@ class TableViewController: UITableViewController {
         
         cell.nameTextLabel.text = diary.name
         cell.descriptionTextLable.text = diary.formatDate()
-        cell.imageLabel.layer.cornerRadius = 0.5
-        
 
         return cell
     }

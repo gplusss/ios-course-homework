@@ -11,16 +11,18 @@ import RealmSwift
 
 class Diary: Object {
     enum Weather: String {
-        case rain, shower, storm
+        case sun, rain, storm
     }
     
     dynamic var id = UUID().uuidString
     dynamic var name: String?
     dynamic var direction: Date?
-    fileprivate dynamic var weatherRaw = Weather.rain.rawValue
+    fileprivate dynamic var weatherRaw = Weather.sun.rawValue
     var weather: Weather {
         set { self.weatherRaw = newValue.rawValue }
-        get { return Weather(rawValue: weatherRaw)! }
+        get {
+            return Weather(rawValue: weatherRaw)!
+        }
     }
     
     convenience init(name: String? = nil, direction: Date? = nil) {
@@ -37,6 +39,8 @@ class Diary: Object {
         }
         return ""
     }
+    
+
     
     override class func primaryKey() -> String? { return "id" }
 }
