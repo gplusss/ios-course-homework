@@ -10,11 +10,8 @@ import UIKit
 import Foundation
 import RealmSwift
 
-
-
 class TableViewController: UITableViewController {
     
-    let tapBar = UITabBarController()
     var delegate: SecondViewControllerDelegate?
         
     fileprivate var diaries: Results<Diary>?
