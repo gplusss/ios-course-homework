@@ -32,16 +32,22 @@ class DiariesViewController: UITableViewController {
             let yesterday = Date() - 1.days
             diaries = realm.objects(Diary.self).filter(NSPredicate(format: "direction < %@ AND direction > %@", yesterday.endOfDay as CVarArg, yesterday.startOfDay as CVarArg))
         case .last_week:
-            let yesterday = Date() - 1.days
-            let lastWeek = Date().isBefore(date: yesterday, granularity: .day)
-            diaries = realm.objects(Diary.self).filter(NSPredicate(format: "direction < %@", lastWeek as CVarArg))
-            
-        default:
-            break
+            // calendar = NSCalendar.current
+            let lastWeekEnd = Date() - 6.days
+            let lastWeekStart = Date() - 2.days
+            diaries = realm.objects(Diary.self).filter(NSPredicate(format: "direction < %@ AND direction > %@", lastWeekStart as CVarArg, lastWeekEnd as CVarArg))
+        case .all: diaries = realm.objects(Diary.self)
+
         }
     }
         tableView.reloadData()
 }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.titleView = segmentController
+        segmentController.selectedSegmentIndex = 3
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,12 +60,12 @@ class DiariesViewController: UITableViewController {
         
         segmentController.addTarget(self, action: #selector(DiariesViewController.filterSegment(_:)), for: UIControlEvents.valueChanged)
         
-        self.navigationItem.titleView = segmentController
+        
 
         let realm = try! Realm()
         
         diaries = realm.objects(Diary.self)
-        print(diaries as Any)
+        //print(diaries as Any)
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,9 +77,9 @@ class DiariesViewController: UITableViewController {
         return 1
     }
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int)->Int {
-        return diaries!.count
-    }
+//    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int)->Int {
+//        return diaries!.count
+//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (diaries?.count)!

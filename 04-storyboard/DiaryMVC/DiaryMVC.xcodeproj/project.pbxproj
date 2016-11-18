@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		23C25F55E584A55632869BFB /* Pods_DiaryMVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC21F3A544CF5AF9B42C218E /* Pods_DiaryMVC.framework */; };
+		406B61851DD9C0350057F6F3 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406B61841DD9C0350057F6F3 /* EventsModel.swift */; };
+		406B61891DD9C9C70057F6F3 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406B61881DD9C9C70057F6F3 /* Weather.swift */; };
+		406B618B1DDA24DC0057F6F3 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406B618A1DDA24DC0057F6F3 /* EventViewController.swift */; };
+		406B618D1DDA47350057F6F3 /* EventRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406B618C1DDA47350057F6F3 /* EventRecord.swift */; };
 		40A75B9F1DCF296700EE81B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A75B9E1DCF296700EE81B1 /* AppDelegate.swift */; };
 		40A75BA11DCF296700EE81B1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A75BA01DCF296700EE81B1 /* TableViewController.swift */; };
 		40A75BA41DCF296700EE81B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A75BA21DCF296700EE81B1 /* Main.storyboard */; };
@@ -23,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		406B61841DD9C0350057F6F3 /* EventsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
+		406B61881DD9C9C70057F6F3 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		406B618A1DDA24DC0057F6F3 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		406B618C1DDA47350057F6F3 /* EventRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRecord.swift; sourceTree = "<group>"; };
 		40A75B9B1DCF296700EE81B1 /* DiaryMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiaryMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A75B9E1DCF296700EE81B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40A75BA01DCF296700EE81B1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -99,8 +107,12 @@
 				40A75BB41DCF309E00EE81B1 /* SecondViewController.swift */,
 				40A75BB61DCF337D00EE81B1 /* SettingsViewController.swift */,
 				40BC2D6F1DD32F8800FF06D8 /* DiariesViewController.swift */,
+				406B61881DD9C9C70057F6F3 /* Weather.swift */,
 				40BC2D711DD3307E00FF06D8 /* DiariesViewCell.swift */,
 				40A75BB81DCF41DB00EE81B1 /* SettingsViewCell.swift */,
+				406B61841DD9C0350057F6F3 /* EventsModel.swift */,
+				406B618C1DDA47350057F6F3 /* EventRecord.swift */,
+				406B618A1DDA24DC0057F6F3 /* EventViewController.swift */,
 				40A75BA21DCF296700EE81B1 /* Main.storyboard */,
 				40A75BA51DCF296700EE81B1 /* Assets.xcassets */,
 				40A75BA71DCF296700EE81B1 /* LaunchScreen.storyboard */,
@@ -237,12 +249,16 @@
 				40A75BB11DCF2ABA00EE81B1 /* TableViewCell.swift in Sources */,
 				40A75BA11DCF296700EE81B1 /* TableViewController.swift in Sources */,
 				40A75B9F1DCF296700EE81B1 /* AppDelegate.swift in Sources */,
+				406B61851DD9C0350057F6F3 /* EventsModel.swift in Sources */,
 				40A75BB51DCF309E00EE81B1 /* SecondViewController.swift in Sources */,
+				406B618B1DDA24DC0057F6F3 /* EventViewController.swift in Sources */,
 				40BC2D721DD3307E00FF06D8 /* DiariesViewCell.swift in Sources */,
+				406B61891DD9C9C70057F6F3 /* Weather.swift in Sources */,
 				40A75BB31DCF305C00EE81B1 /* Diary.swift in Sources */,
 				40A75BB91DCF41DB00EE81B1 /* SettingsViewCell.swift in Sources */,
 				40BC2D701DD32F8800FF06D8 /* DiariesViewController.swift in Sources */,
 				40A75BB71DCF337D00EE81B1 /* SettingsViewController.swift in Sources */,
+				406B618D1DDA47350057F6F3 /* EventRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

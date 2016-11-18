@@ -12,5 +12,5 @@ import UIKit
 class TableViewCell: UITableViewCell {
     @IBOutlet weak var nameTextLabel: UILabel!
     @IBOutlet weak var descriptionTextLable: UILabel!
-    @IBOutlet weak var imageLabel: UILabel!
+    @IBOutlet weak var weatherView: UIImageView!
 }

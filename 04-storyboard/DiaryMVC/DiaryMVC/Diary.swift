@@ -12,6 +12,14 @@ import RealmSwift
 class Diary: Object {
     enum Weather: String {
         case sun, rain, storm
+        
+        var image: UIImage {
+            switch self {
+            case .sun: return UIImage(named: "weather_sun")!
+            case .rain: return UIImage(named: "weather_rain")!
+            case .storm: return UIImage(named: "weather_storm")!
+            }
+        }
     }
     
     dynamic var id = UUID().uuidString
@@ -39,8 +47,6 @@ class Diary: Object {
         }
         return ""
     }
-    
-
-    
+        
     override class func primaryKey() -> String? { return "id" }
 }

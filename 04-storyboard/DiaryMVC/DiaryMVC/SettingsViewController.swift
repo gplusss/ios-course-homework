@@ -81,17 +81,25 @@ class SettingsViewController: UITableViewController, UITextViewDelegate, UITextF
     }
     
     @IBAction func switcher(_ sender: UISwitch) {
+        let animation = CABasicAnimation(keyPath: "backgroundColor")
         
         
-        
+       
         if sender.isOn == false {
-            self.tableView.backgroundColor = UIColor.red
-            NSLog("red")
+            animation.fromValue = UIColor.red.cgColor
+            animation.toValue = UIColor.green.cgColor
+            animation.duration = 0.9
+//            self.tableView.backgroundColor = UIColor.red
+//            NSLog("red")
             
         } else if sender.isOn == true {
-            self.tableView.backgroundColor = UIColor.blue
-            NSLog("blue")
+            animation.fromValue = UIColor.red.cgColor
+            animation.toValue = UIColor.green.cgColor
+            animation.duration = 0.9
+//            self.tableView.backgroundColor = UIColor.blue
+//            NSLog("blue")
         }
+        view.layer.add(animation, forKey: nil)
     }
 }
 

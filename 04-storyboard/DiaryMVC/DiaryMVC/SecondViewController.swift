@@ -20,13 +20,10 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     let segmentController = UISegmentedControl()
     var delegate: SecondViewControllerDelegate?
     
-
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var directionsTextView: UITextView!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var weatherSegmentController: UISegmentedControl!    
     @IBOutlet weak var weatherImage: UIImageView!
     
     
@@ -37,6 +34,10 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
     }
     
     func weatherController(_ sender: UISegmentedControl) {
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(diary!)
         
         let index = segmentController.selectedSegmentIndex
         switch index {
@@ -54,7 +55,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         }
         
     }
-    
+}
     func updateFields() {
         if let diary = diary {
             nameTextField?.text = diary.name
@@ -72,8 +73,7 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
             
         } else {
             nameTextField?.text = ""
-            directionsTextView?.text = ""
-            
+            directionsTextView?.text = ""            
         }
     }
     
@@ -90,7 +90,6 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         } else {
             saveButton.setTitle("SAVE", for: UIControlState())
         }
-        updateFields()
         
         segmentController.frame = CGRect(x: 200, y: 30, width: 200, height: 30)
         segmentController.insertSegment(with: UIImage(named: "weather_sun"), at: 0, animated: true)
@@ -98,7 +97,9 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         segmentController.insertSegment(with: UIImage(named: "weather_storm"), at: 2, animated: true)
         
         segmentController.addTarget(self, action: #selector(SecondViewController.weatherController(_:)), for: UIControlEvents.valueChanged)
-        
+        self.view.addSubview(segmentController)
+        updateFields()
+        self.navigationController?.navigationBar.tintColor = UIColor.darkGray
         self.navigationItem.titleView = segmentController
     }
     
@@ -133,7 +134,6 @@ class SecondViewController: UITableViewController, UITextViewDelegate, UITextFie
         diary?.name = title
         diary?.direction = datePicker.date
         
-
         doneDidPressed()
         delegate?.didSaveDiary(diary!)
         

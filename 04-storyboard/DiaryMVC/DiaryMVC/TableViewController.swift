@@ -48,7 +48,7 @@ class TableViewController: UITableViewController {
         let realm = try! Realm()
         
         diaries = realm.objects(Diary.self).sorted(byProperty: "direction", ascending: true)
-        
+        navigationController?.hidesBarsOnSwipe = true
         tableView.reloadData()
     }
     
@@ -75,7 +75,9 @@ class TableViewController: UITableViewController {
         
         cell.nameTextLabel.text = diary.name
         cell.descriptionTextLable.text = diary.formatDate()
-
+        cell.weatherView.image = diary.weather.image
+        // не могу передать imageView
+        
         return cell
     }
     
@@ -106,7 +108,7 @@ class TableViewController: UITableViewController {
             tableView.endUpdates()
         }
         
-        deleteAction.backgroundColor = UIColor.red
+        deleteAction.backgroundColor = UIColor.blue
         return [deleteAction]
     }
 }
